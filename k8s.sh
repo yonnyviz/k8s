@@ -35,10 +35,16 @@ function destroy() {
 
 function argParser() {
     shift
-    while getopts "f:" opt; do
+    while getopts "f:d:n:" opt; do
         case ${opt} in
         f)
             KEY_FILE_PATH=${OPTARG}
+            ;;
+        d)
+            DOCKERFILE_PATH=${OPTARG}
+            ;;
+        n)
+            APP_NAME=${OPTARG}
             ;;
         \?)
             echo "Dev help test"
@@ -63,6 +69,6 @@ if [[ $# -gt 0 ]]; then
     fi
 else
     echo "
-        k8s create [ -f: key-file-path ]
+        k8s create [ -f: key-file-path ] [ -d: dockerfile-folder-path ] [ -n: app-name ]
     "
 fi
