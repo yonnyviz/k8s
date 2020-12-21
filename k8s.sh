@@ -49,10 +49,10 @@ if [[ $# -gt 0 ]]; then
         create
     fi
     if [[ $1 == "destroy" ]]; then
-        echo "Destroying"
+        destroy
     fi
     if [[ $1 == "output" ]]; then
-        echo "Outputing"
+        echo "Not Implemented"
     fi
 else
     echo "
