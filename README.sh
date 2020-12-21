@@ -2,92 +2,28 @@
 
 Wrapper scripts for deploying a k8s cluster.
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Prerequisites
 
-A Google Cloud Platform account. If you don't have a GCP account, create one now. This tutorial can be completed using only the services included in the GCP free tier. However, if you provision infrastructure beyond the free tier, you may be charged.
+- A Google Cloud Platform account.
+- A configured gcloud SDK.
+- A system with Terraform installed.
+- A system with kubectl installed.
 
-A system with Terraform installed. This tutorial includes instructions for installing Terraform on the platform of your choice.
 
 ### How to Use
 
-What things you need to install the software and how to install them
+#### Cluster Creation
+
+Creates GKE clusted by passing a GCP Service Account key file.
 
 ```
-k8s create [ -c: gcp-credential-file-path ] [ -p: gcp-project-id ]
+./k8s create [ -f: gcp-credential-file-path ]
 ```
 
-### Installing
+#### Cluster Destruction
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Destroy GKE clusted by passing a GCP Service Account key file.
 
 ```
-Give the example
+./k8s destroy [ -f: gcp-credential-file-path ]
 ```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-## Authors
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
