@@ -23,7 +23,7 @@ function create() {
 
     activateServiceAccount ${KEY_FILE_PATH} &&
         cd ${TERRAFORM_MODULE_PATH} &&
-        buildTerraform ${PROJECT_ID}
+        provisionInfrastructure ${PROJECT_ID}
 }
 
 function destroy() {
