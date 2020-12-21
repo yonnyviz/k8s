@@ -14,8 +14,13 @@ function activateServiceAccount() {
 
 function configureKubectl() {
 
-    echo "gcloud container clusters get-credentials ${TF_VAR_k8s_name} --region ${TF_VAR_region}"
+function buildAndPushImage() {
+    local DOCKERFILE_PATH=${1}
+    local PROJECT_ID=${2}
+    local APP_NAME=${3}
 
+    docker build -t gcr.io/${PROJECT_ID}/${APP_NAME} ${DOCKERFILE_PATH} &&
+        docker push gcr.io/${PROJECT_ID}/${APP_NAME}
 }
 
 function terraformUpdate() {

@@ -16,6 +16,11 @@ source $(pwd)"/modules/gcp-functions.sh"
 TERRAFORM_MODULE_PATH=$(pwd)"/terraform"
 
 function create() {
+
+    if [[ ! -z ${DOCKERFILE_PATH} ]]; then
+        buildAndPushImage ${DOCKERFILE_PATH} ${PROJECT_ID} ${APP_NAME}
+    fi
+
     activateServiceAccount ${KEY_FILE_PATH} &&
         cd ${TERRAFORM_MODULE_PATH} &&
         buildTerraform ${PROJECT_ID}
