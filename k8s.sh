@@ -8,17 +8,45 @@
 # imports
 #
 source $(pwd)"/modules/terraform-functions.sh"
+source $(pwd)"/modules/gcp-functions.sh"
 
 #
 # Paths definitions
 #
-terraform_module_path=$(pwd)"/terraform"
+TERRAFORM_MODULE_PATH=$(pwd)"/terraform"
 
+function create() {
+    activateServiceAccount ${KEY_FILE_PATH} &&
+        cd ${TERRAFORM_MODULE_PATH} &&
+        buildTerraform ${PROJECT_ID}
+}
+
+function destroy() {
+    cd ${TERRAFORM_MODULE_PATH} &&
+        terraformDestroy ${PROJECT_ID}
+}
+
+function argParser() {
+    shift
+    while getopts "f:" opt; do
+        case ${opt} in
+        f)
+            KEY_FILE_PATH=${OPTARG}
+            ;;
+        \?)
+            echo "Dev help test"
+            exit 1
+            ;;
+        esac
+    done
+    shift $((OPTIND - 1))
+}
+
+argParser $@
 
 if [[ $# -gt 0 ]]; then
     if [[ $1 == "create" ]]; then
-        echo "Creating"
-        cd ${terraform_module_path} && terraformBuild $@
+        create
     fi
     if [[ $1 == "destroy" ]]; then
         echo "Destroying"
@@ -28,6 +56,6 @@ if [[ $# -gt 0 ]]; then
     fi
 else
     echo "
-        k8s create [ -c: credential-file ] [ -p: project-id ]
+        k8s create [ -f: key-file-path ]
     "
 fi
