@@ -24,6 +24,8 @@ function create() {
     activateServiceAccount ${KEY_FILE_PATH} &&
         cd ${TERRAFORM_MODULE_PATH} &&
         provisionInfrastructure ${PROJECT_ID}
+    
+    deployApp ${PROJECT_ID} ${APP_NAME} 1
 }
 
 function destroy() {
