@@ -1,11 +1,23 @@
-variable "project_id" {}
-
-variable "credentials_file_path" {}
-
-variable "region" {
-  default = "us-central1"
+variable "PROJECT_ID" {
+  description = "GCP Project ID"
 }
 
-variable "zone" {
-  default = "us-central1-c"
+variable "REGION" {
+  default     = "us-west1"
+  description = "region"
+}
+
+variable "GKE_USERNAME" {
+  default     = ""
+  description = "gke username"
+}
+
+variable "GKE_PASSWORD" {
+  default     = ""
+  description = "gke password"
+}
+
+variable "GKE_NUM_NODES" {
+  default     = 1
+  description = "number of gke nodes"
 }
