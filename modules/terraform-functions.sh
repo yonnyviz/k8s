@@ -15,9 +15,11 @@ function provisionInfrastructure() {
 }
 
 function terraformDestroy() {
+    local PROJECT_ID=${1}
+
     terraform destroy -auto-approve \
         -input=false \
-        -var 'PROJECT_ID='${1}''
+        -var 'PROJECT_ID='${PROJECT_ID}''
 }
 
 function terraformUpdate() {
