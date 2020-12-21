@@ -32,3 +32,12 @@ Destroy GKE clusted by passing a GCP Service Account key file.
 ```
 ./k8s destroy [ -f: gcp-credential-file-path ]
 ```
+
+#### Pending tasks to do
+
+```
+[x] - Implement GKE Ingress Control
+[x] - Fix python rest api /greeting respone
+[x] - Fix python rest api /square respone
+[x] - Fix python rest api /square respone
+```
