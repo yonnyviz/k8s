@@ -17,7 +17,7 @@ function deployApp() {
     local APP_NAME=${2}
     local REPLICAS=${3}
 
-    kubectl create deployment ${APP_NAME} --image=gcr.io/${PROJECT_ID}/${APP_NAME} &&
+    kubectl create deployment ${APP_NAME} --image=gcr.io/${PROJECT_ID}/${APP_NAME}:latest &&
         kubectl scale deployment ${APP_NAME} --replicas=${REPLICAS} &&
         kubectl expose deployment ${APP_NAME} \
             --name=${APP_NAME}-service \
